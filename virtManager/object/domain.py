@@ -1038,12 +1038,7 @@ class vmmDomain(vmmLibvirtObject):
             return
 
         if newdev != _SENTINEL:
-            editdev.type = newdev.type
             editdev.name = newdev.name
-            editdev.server_path = newdev.server_path
-            editdev.role = newdev.role
-            editdev.msi_vectors = newdev.msi_vectors
-            editdev.msi_ioeventfd = newdev.msi_ioeventfd
             editdev.size = newdev.size
 
         self._process_device_define(editdev, xmlobj, do_hotplug)

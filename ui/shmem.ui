@@ -7,27 +7,33 @@
     <property name="step-increment">1</property>
     <property name="page-increment">10</property>
   </object>
+  <object class="GtkEntryCompletion" id="entrycompletion1"/>
+  <object class="GtkAdjustment" id="size-adjustement">
+    <property name="upper">1048576</property>
+    <property name="value">1</property>
+    <property name="step-increment">1</property>
+  </object>
   <object class="GtkBox" id="top-box">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
     <property name="orientation">vertical</property>
     <property name="spacing">12</property>
     <child>
-      <!-- n-columns=2 n-rows=5 -->
+      <!-- n-columns=2 n-rows=3 -->
       <object class="GtkGrid" id="shmem-grid">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
         <property name="row-spacing">6</property>
         <property name="column-spacing">6</property>
         <child>
-          <object class="GtkLabel">
+          <object class="GtkComboBox" id="shmem-size">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="label" translatable="yes">name:</property>
+            <signal name="changed" handler="on_shmem_size_changed" swapped="no"/>
           </object>
           <packing>
-            <property name="left-attach">0</property>
-            <property name="top-attach">0</property>
+            <property name="left-attach">1</property>
+            <property name="top-attach">2</property>
           </packing>
         </child>
         <child>
@@ -38,6 +44,17 @@
           </object>
           <packing>
             <property name="left-attach">0</property>
+            <property name="top-attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">name:</property>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
             <property name="top-attach">1</property>
           </packing>
         </child>
@@ -45,28 +62,12 @@
           <object class="GtkEntry" id="shmem-name">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
+            <property name="text" translatable="yes">looking-glass</property>
             <signal name="changed" handler="on_shmem_name_changed" swapped="no"/>
           </object>
           <packing>
             <property name="left-attach">1</property>
-            <property name="top-attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkComboBox" id="shmem-model">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="has-entry">True</property>
-            <signal name="changed" handler="on_shmem_model_changed" swapped="no"/>
-            <child internal-child="entry">
-              <object class="GtkEntry">
-                <property name="can-focus">False</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="left-attach">1</property>
-            <property name="top-attach">2</property>
+            <property name="top-attach">1</property>
           </packing>
         </child>
         <child>
@@ -77,60 +78,19 @@
           </object>
           <packing>
             <property name="left-attach">0</property>
-            <property name="top-attach">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkCheckButton" id="msi-io">
-            <property name="label" translatable="yes">msi_ioeventfd</property>
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="receives-default">False</property>
-            <property name="draw-indicator">True</property>
-            <signal name="toggled" handler="on_shmem_io_enabled" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left-attach">0</property>
-            <property name="top-attach">3</property>
+            <property name="top-attach">0</property>
           </packing>
         </child>
         <child>
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="label" translatable="yes">server_path:</property>
-          </object>
-          <packing>
-            <property name="left-attach">0</property>
-            <property name="top-attach">4</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkEntry" id="shmem-path">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="invisible-char">●</property>
-            <property name="width-chars">12</property>
-            <signal name="changed" handler="on_shmem_path_changed" swapped="no"/>
+            <property name="label" translatable="yes">ivshmem-plain</property>
           </object>
           <packing>
             <property name="left-attach">1</property>
-            <property name="top-attach">4</property>
+            <property name="top-attach">0</property>
           </packing>
-        </child>
-        <child>
-          <object class="GtkComboBox" id="shmem-size">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <signal name="changed" handler="on_shmem_size_changed" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left-attach">1</property>
-            <property name="top-attach">1</property>
-          </packing>
-        </child>
-        <child>
-          <placeholder/>
         </child>
       </object>
       <packing>
@@ -139,107 +99,5 @@
         <property name="position">0</property>
       </packing>
     </child>
-    <child>
-      <object class="GtkExpander">
-        <property name="visible">True</property>
-        <property name="can-focus">True</property>
-        <child>
-          <!-- n-columns=2 n-rows=4 -->
-          <object class="GtkGrid">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="margin-top">6</property>
-            <property name="row-spacing">6</property>
-            <property name="column-spacing">6</property>
-            <child>
-              <object class="GtkSpinButton" id="shmem-msi">
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="adjustment">adjustment1</property>
-                <signal name="changed" handler="on_shmem_msi_value_changed" swapped="no"/>
-              </object>
-              <packing>
-                <property name="left-attach">1</property>
-                <property name="top-attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="halign">end</property>
-                <property name="label" translatable="yes">_role:</property>
-                <property name="use-underline">True</property>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="top-attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkComboBox" id="shmem-role">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="has-entry">True</property>
-                <signal name="changed" handler="on_shmem_role_changed" swapped="no"/>
-                <child internal-child="entry">
-                  <object class="GtkEntry">
-                    <property name="can-focus">False</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="left-attach">1</property>
-                <property name="top-attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkCheckButton" id="msi-enable">
-                <property name="label" translatable="yes">msi:</property>
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="receives-default">False</property>
-                <property name="draw-indicator">True</property>
-                <signal name="toggled" handler="on_shmem_msi_enabled" swapped="no"/>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="top-attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-          </object>
-        </child>
-        <child type="label">
-          <object class="GtkLabel" id="tpm-advanced">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="label" translatable="yes">Adva_nced options</property>
-            <property name="use-underline">True</property>
-          </object>
-        </child>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">1</property>
-      </packing>
-    </child>
-  </object>
-  <object class="GtkAdjustment" id="size-adjustement">
-    <property name="upper">1048576</property>
-    <property name="value">1</property>
-    <property name="step-increment">1</property>
   </object>
 </interface>
