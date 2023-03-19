@@ -778,9 +778,9 @@ class vmmAddHardware(vmmGObjectUI):
             sensitive = dev.is_active()
             if not sensitive:
                 tooltip = _("%s is not active in the host system.\n"
-                            "Please start the mdev in the host system before "
-                            "adding it to the guest.") % prettyname
-            if dev.xmlobj.iommugroup and uiutil.get_list_selection(select) == dev.xmlobj.iommugroup:
+                      "Please start the mdev in the host system before "
+                      "adding it to the guest.") % prettyname
+            if uiutil.get_list_selection(select) == dev.xmlobj.iommugroup:
                 model.append([dev.xmlobj, prettyname, sensitive, tooltip])
             if not devtype == "pci":
                 self.widget("host-device").get_selection().set_mode(1)
@@ -802,22 +802,18 @@ class vmmAddHardware(vmmGObjectUI):
         # This function is used to add iommu groups in the gtk combobox in pci page
 
         rows = []
-        myset = set()
 
         # add iommugroup in a set to prevent duplicates
 
         for dev in self.conn.filter_nodedevs("pci"):
-            myset.add(dev.xmlobj.iommugroup)
+            if [dev.xmlobj.iommugroup, "Iommu_Group_{0}".format(dev.xmlobj.iommugroup)] in rows:
+                continue
+            if dev.xmlobj.is_pci_bridge() or dev.xmlobj.iommugroup is None or dev.xmlobj.is_cardbus_bridge():
+                continue
+            rows.append([dev.xmlobj.iommugroup, "Iommu_Group_{0}".format(dev.xmlobj.iommugroup)])
 
         ''' iterate over list second time to remove the inexistant intel or amd iommu device iommugroup
         and to remove iommugroups which have pci-bridge '''
-
-        for dev in self.conn.filter_nodedevs("pci"):
-            if dev.xmlobj.is_pci_bridge() or dev.xmlobj.iommugroup is None or dev.xmlobj.is_cardbus_bridge():
-                myset.discard(dev.xmlobj.iommugroup)
-
-        for i in myset:
-            rows.append([i, "Iommu_Group_{0}".format(i)])
 
         uiutil.build_simple_combo(self.widget("iommu-groups"), rows, sort=False)
 
@@ -1272,10 +1268,8 @@ class vmmAddHardware(vmmGObjectUI):
         if condition:
             for devs in dev:
                 self.vm.add_device(devs)
-
-        else:
-            self.vm.add_device(dev)
-            return False
+            return
+        self.vm.add_device(dev)
 
     def _finish_cb(self, error, details, dev):
         failure = True
@@ -1351,15 +1345,14 @@ class vmmAddHardware(vmmGObjectUI):
                 self._netlist.validate_device(dev)
 
             dev.validate()
+            return
+        
+        for devs in dev:
+            if devs.DEVICE_TYPE == "hostdev":
+                if self._validate_hostdev_collision(dev) is False:
+                    return False
 
-        else:
-            for devs in dev:
-
-                if devs.DEVICE_TYPE == "hostdev":
-                    if self._validate_hostdev_collision(dev) is False:
-                        return False
-
-                devs.validate()
+            devs.validate()
 
     def _build_xmleditor_device(self, srcdev):
         xml = self._xmleditor.get_xml()
@@ -1428,16 +1421,15 @@ class vmmAddHardware(vmmGObjectUI):
         elif page_num == PAGE_VSOCK:
             dev = self._build_vsock()
 
-        rows = []
-
-        if page_num == PAGE_HOSTDEV:
+        if isinstance(dev, list):
+            pci = []
             for devs in dev:
                 devs.set_defaults(self.vm.get_xmlobj())
-                rows.append(devs)
-            return rows
-        else:
-            dev.set_defaults(self.vm.get_xmlobj())
-            return dev
+                pci.append(devs)
+            return pci
+
+        dev.set_defaults(self.vm.get_xmlobj())
+        return dev
 
     def _set_disk_controller(self, disk):
         # Add a SCSI controller with model virtio-scsi if needed
@@ -1505,16 +1497,17 @@ class vmmAddHardware(vmmGObjectUI):
         if nodedev:
             dev.set_from_nodedev(nodedev)
             setattr(dev, "vmm_nodedev", nodedev)
-            yield dev
+            return dev
         # This is used to add all pci devices in a iommugroup
-        else:
-            for i in self.widget("host-device").get_model():
-                for y in i:
-                    if isinstance(y, NodeDevice):
-                        dev = DeviceHostdev(self.conn.get_backend())
-                        dev.set_from_nodedev(y)
-                        setattr(dev, "vmm_nodedev", y)
-                        yield dev
+        pci = []
+        for i in self.widget("host-device").get_model():
+            for y in i:
+                if isinstance(y, NodeDevice):
+                    dev = DeviceHostdev(self.conn.get_backend())
+                    dev.set_from_nodedev(y)
+                    setattr(dev, "vmm_nodedev", y)
+                    pci.append(dev)
+        return pci
 
     def _build_char(self):
         char_class = self._get_char_class()
