@@ -98,11 +98,11 @@ def drop_tty():
     # We fork and setsid so that we drop the controlling
     # tty. This prevents libvirt's SSH tunnels from prompting
     # for user input if SSH keys/agent aren't configured.
-    '''if os.fork() != 0:
+    if os.fork() != 0:
         # pylint: disable=protected-access
-        os._exit(0)  # pragma: no cover'''
+        os._exit(0)  # pragma: no cover
 
-    #os.setsid()
+    os.setsid()
 
 
 def drop_stdio():
