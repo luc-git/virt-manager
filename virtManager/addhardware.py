@@ -9,10 +9,10 @@ import traceback
 from gi.repository import Gtk
 
 from virtinst import (DeviceChannel, DeviceConsole,
-                      DeviceController, DeviceDisk, DeviceHostdev,
-                      DeviceInput, DeviceInterface, DevicePanic, DeviceParallel,
-                      DeviceRedirdev, DeviceRng, DeviceSerial, DeviceSmartcard,
-                      DeviceSound, DeviceVideo, DeviceVsock, DeviceWatchdog, NodeDevice)
+        DeviceController, DeviceDisk, DeviceHostdev,
+        DeviceInput, DeviceInterface, DevicePanic, DeviceParallel,
+        DeviceRedirdev, DeviceRng, DeviceSerial, DeviceSmartcard,
+        DeviceSound, DeviceVideo, DeviceVsock, DeviceWatchdog, NodeDevice)
 from virtinst import log
 
 from .lib import uiutil
