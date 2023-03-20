@@ -179,7 +179,7 @@
                             <property name="margin-start">12</property>
                             <property name="margin-top">3</property>
                             <child>
-                              <!-- n-columns=2 n-rows=5 -->
+                              <!-- n-columns=3 n-rows=5 -->
                               <object class="GtkGrid" id="table5">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
@@ -275,7 +275,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <!-- n-columns=2 n-rows=1 -->
+                                  <!-- n-columns=3 n-rows=3 -->
                                   <object class="GtkGrid" id="grid1">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
@@ -304,6 +304,27 @@
                                         <property name="left-attach">0</property>
                                         <property name="top-attach">0</property>
                                       </packing>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
                                     </child>
                                   </object>
                                   <packing>
@@ -348,6 +369,21 @@
                                     <property name="top-attach">4</property>
                                   </packing>
                                 </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -385,7 +421,7 @@
                             <property name="margin-start">12</property>
                             <property name="margin-top">3</property>
                             <child>
-                              <!-- n-columns=2 n-rows=6 -->
+                              <!-- n-columns=3 n-rows=6 -->
                               <object class="GtkGrid" id="table1">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
@@ -647,6 +683,24 @@
                                     <property name="top-attach">4</property>
                                   </packing>
                                 </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -836,7 +890,7 @@
                         <property name="can-focus">False</property>
                         <property name="spacing">12</property>
                         <child>
-                          <!-- n-columns=2 n-rows=1 -->
+                          <!-- n-columns=3 n-rows=3 -->
                           <object class="GtkGrid" id="details-inspection-error-box">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
@@ -872,6 +926,27 @@
                                 <property name="left-attach">1</property>
                                 <property name="top-attach">0</property>
                               </packing>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
                             </child>
                           </object>
                           <packing>
@@ -1267,7 +1342,7 @@
                                 <property name="can-focus">False</property>
                                 <property name="spacing">6</property>
                                 <child>
-                                  <!-- n-columns=2 n-rows=3 -->
+                                  <!-- n-columns=3 n-rows=3 -->
                                   <object class="GtkGrid" id="table30">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
@@ -1381,6 +1456,15 @@
                                         <property name="width">2</property>
                                       </packing>
                                     </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -1425,7 +1509,7 @@
                             <property name="margin-start">12</property>
                             <property name="margin-top">3</property>
                             <child>
-                              <!-- n-columns=2 n-rows=3 -->
+                              <!-- n-columns=3 n-rows=3 -->
                               <object class="GtkGrid" id="table15">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
@@ -1502,6 +1586,15 @@
                                     <property name="top-attach">2</property>
                                     <property name="width">2</property>
                                   </packing>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
                                 </child>
                               </object>
                               <packing>
@@ -1744,7 +1837,7 @@
                             <property name="margin-start">12</property>
                             <property name="margin-top">3</property>
                             <child>
-                              <!-- n-columns=2 n-rows=4 -->
+                              <!-- n-columns=3 n-rows=4 -->
                               <object class="GtkGrid" id="table6">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
@@ -1927,6 +2020,18 @@
                                 <child>
                                   <placeholder/>
                                 </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -1973,7 +2078,7 @@
                   </packing>
                 </child>
                 <child>
-                  <!-- n-columns=1 n-rows=4 -->
+                  <!-- n-columns=3 n-rows=4 -->
                   <object class="GtkGrid" id="vbox4">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
@@ -2036,7 +2141,7 @@
                             <property name="margin-start">12</property>
                             <property name="margin-top">3</property>
                             <child>
-                              <!-- n-columns=2 n-rows=2 -->
+                              <!-- n-columns=3 n-rows=3 -->
                               <object class="GtkGrid" id="grid3">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
@@ -2094,6 +2199,21 @@
                                     <property name="left-attach">1</property>
                                     <property name="top-attach">1</property>
                                   </packing>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
                                 </child>
                               </object>
                               <packing>
@@ -2463,7 +2583,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <!-- n-columns=2 n-rows=1 -->
+                                  <!-- n-columns=3 n-rows=3 -->
                                   <object class="GtkGrid" id="table2">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
@@ -2564,6 +2684,27 @@
                                         <property name="top-attach">0</property>
                                       </packing>
                                     </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
                                   </object>
                                   <packing>
                                     <property name="expand">True</property>
@@ -2593,6 +2734,30 @@
                         <property name="left-attach">0</property>
                         <property name="top-attach">1</property>
                       </packing>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
                     </child>
                     <child internal-child="accessible">
                       <object class="AtkObject" id="vbox4-atkobject">
@@ -2640,7 +2805,7 @@
                                 <property name="orientation">vertical</property>
                                 <property name="spacing">12</property>
                                 <child>
-                                  <!-- n-columns=2 n-rows=4 -->
+                                  <!-- n-columns=3 n-rows=4 -->
                                   <object class="GtkGrid" id="table32">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
@@ -2839,6 +3004,18 @@
                                         <property name="top-attach">2</property>
                                       </packing>
                                     </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -2947,7 +3124,7 @@
                             <property name="margin-start">12</property>
                             <property name="margin-top">3</property>
                             <child>
-                              <!-- n-columns=2 n-rows=5 -->
+                              <!-- n-columns=3 n-rows=5 -->
                               <object class="GtkGrid" id="table31">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
@@ -3161,6 +3338,21 @@
                                     <property name="top-attach">3</property>
                                   </packing>
                                 </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -3225,7 +3417,7 @@
                             <property name="margin-start">12</property>
                             <property name="margin-top">3</property>
                             <child>
-                              <!-- n-columns=2 n-rows=2 -->
+                              <!-- n-columns=3 n-rows=3 -->
                               <object class="GtkGrid" id="table33">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
@@ -3282,6 +3474,21 @@
                                     <property name="left-attach">1</property>
                                     <property name="top-attach">0</property>
                                   </packing>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
                                 </child>
                               </object>
                               <packing>
@@ -3404,7 +3611,7 @@
                             <property name="margin-start">12</property>
                             <property name="margin-top">3</property>
                             <child>
-                              <!-- n-columns=2 n-rows=1 -->
+                              <!-- n-columns=3 n-rows=3 -->
                               <object class="GtkGrid" id="table36">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
@@ -3442,6 +3649,27 @@
                                     <property name="left-attach">1</property>
                                     <property name="top-attach">0</property>
                                   </packing>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
                                 </child>
                               </object>
                               <packing>
@@ -3506,7 +3734,7 @@
                             <property name="margin-start">12</property>
                             <property name="margin-top">3</property>
                             <child>
-                              <!-- n-columns=2 n-rows=8 -->
+                              <!-- n-columns=3 n-rows=8 -->
                               <object class="GtkGrid" id="table37">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
@@ -3711,6 +3939,30 @@
                                     <property name="top-attach">1</property>
                                   </packing>
                                 </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -3773,8 +4025,10 @@
                             <property name="can-focus">False</property>
                             <property name="margin-start">12</property>
                             <property name="margin-top">3</property>
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">6</property>
                             <child>
-                              <!-- n-columns=2 n-rows=2 -->
+                              <!-- n-columns=2 n-rows=1 -->
                               <object class="GtkGrid" id="table50">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
@@ -3806,6 +4060,19 @@
                                     <property name="top-attach">0</property>
                                   </packing>
                                 </child>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <!-- n-columns=3 n-rows=1 -->
+                              <object class="GtkGrid">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="column-spacing">6</property>
                                 <child>
                                   <object class="GtkLabel" id="label5">
                                     <property name="visible">True</property>
@@ -3813,11 +4080,10 @@
                                     <property name="halign">start</property>
                                     <property name="label" translatable="yes">ROM _BAR:</property>
                                     <property name="use-underline">True</property>
-                                    <property name="mnemonic-widget">hostdev-rombar</property>
                                   </object>
                                   <packing>
                                     <property name="left-attach">0</property>
-                                    <property name="top-attach">1</property>
+                                    <property name="top-attach">0</property>
                                   </packing>
                                 </child>
                                 <child>
@@ -3831,14 +4097,74 @@
                                   </object>
                                   <packing>
                                     <property name="left-attach">1</property>
-                                    <property name="top-attach">1</property>
+                                    <property name="top-attach">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <!-- n-columns=4 n-rows=1 -->
+                                  <object class="GtkGrid">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="column-spacing">6</property>
+                                    <child>
+                                      <object class="GtkButton" id="import-rombar">
+                                        <property name="label" translatable="yes">import rombar</property>
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">True</property>
+                                        <property name="receives-default">True</property>
+                                        <signal name="clicked" handler="on_import_rombar_clicked" swapped="no"/>
+                                      </object>
+                                      <packing>
+                                        <property name="left-attach">3</property>
+                                        <property name="top-attach">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <property name="label" translatable="yes">file:</property>
+                                      </object>
+                                      <packing>
+                                        <property name="left-attach">0</property>
+                                        <property name="top-attach">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkCheckButton" id="enable-romfile">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">True</property>
+                                        <property name="receives-default">False</property>
+                                        <property name="use-stock">True</property>
+                                        <property name="draw-indicator">True</property>
+                                        <signal name="toggled" handler="on_romfile_clicked" swapped="no"/>
+                                      </object>
+                                      <packing>
+                                        <property name="left-attach">1</property>
+                                        <property name="top-attach">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkEntry" id="rom-file">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">True</property>
+                                      </object>
+                                      <packing>
+                                        <property name="left-attach">2</property>
+                                        <property name="top-attach">0</property>
+                                      </packing>
+                                    </child>
+                                  </object>
+                                  <packing>
+                                    <property name="left-attach">2</property>
+                                    <property name="top-attach">0</property>
                                   </packing>
                                 </child>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">True</property>
-                                <property name="position">0</property>
+                                <property name="position">1</property>
                               </packing>
                             </child>
                           </object>
@@ -3891,7 +4217,7 @@
                         <property name="label-xalign">0</property>
                         <property name="shadow-type">none</property>
                         <child>
-                          <!-- n-columns=2 n-rows=2 -->
+                          <!-- n-columns=3 n-rows=3 -->
                           <object class="GtkGrid">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
@@ -3956,6 +4282,21 @@
                                 <property name="top-attach">1</property>
                               </packing>
                             </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
                           </object>
                         </child>
                         <child type="label">
@@ -4012,7 +4353,7 @@
                             <property name="margin-start">12</property>
                             <property name="margin-top">3</property>
                             <child>
-                              <!-- n-columns=2 n-rows=2 -->
+                              <!-- n-columns=3 n-rows=3 -->
                               <object class="GtkGrid" id="table8">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
@@ -4082,6 +4423,21 @@
                                     <property name="top-attach">0</property>
                                   </packing>
                                 </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -4140,7 +4496,7 @@
                         <property name="margin-start">12</property>
                         <property name="margin-top">3</property>
                         <child>
-                          <!-- n-columns=2 n-rows=3 -->
+                          <!-- n-columns=3 n-rows=3 -->
                           <object class="GtkGrid" id="table14">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
@@ -4257,6 +4613,15 @@
                                 <property name="top-attach">2</property>
                               </packing>
                             </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -4359,7 +4724,7 @@
                             <property name="margin-start">12</property>
                             <property name="margin-top">3</property>
                             <child>
-                              <!-- n-columns=2 n-rows=1 -->
+                              <!-- n-columns=3 n-rows=3 -->
                               <object class="GtkGrid" id="table18">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
@@ -4402,6 +4767,27 @@
                                     <property name="left-attach">1</property>
                                     <property name="top-attach">0</property>
                                   </packing>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
                                 </child>
                               </object>
                               <packing>
@@ -4461,7 +4847,7 @@
                         <property name="margin-start">12</property>
                         <property name="margin-top">3</property>
                         <child>
-                          <!-- n-columns=2 n-rows=2 -->
+                          <!-- n-columns=3 n-rows=3 -->
                           <object class="GtkGrid" id="table51">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
@@ -4515,6 +4901,21 @@
                                 <property name="left-attach">1</property>
                                 <property name="top-attach">0</property>
                               </packing>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
                             </child>
                           </object>
                           <packing>
@@ -4625,7 +5026,7 @@
                         <property name="can-focus">False</property>
                         <property name="margin-start">12</property>
                         <child>
-                          <!-- n-columns=2 n-rows=2 -->
+                          <!-- n-columns=3 n-rows=3 -->
                           <object class="GtkGrid" id="table16">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
@@ -4681,6 +5082,21 @@
                                 <property name="top-attach">1</property>
                               </packing>
                             </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -4731,7 +5147,7 @@
                         <property name="can-focus">False</property>
                         <property name="margin-start">12</property>
                         <child>
-                          <!-- n-columns=2 n-rows=1 -->
+                          <!-- n-columns=3 n-rows=3 -->
                           <object class="GtkGrid" id="table_panic">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
@@ -4762,6 +5178,27 @@
                                 <property name="left-attach">1</property>
                                 <property name="top-attach">0</property>
                               </packing>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
                             </child>
                           </object>
                           <packing>
