@@ -817,17 +817,12 @@ class vmmAddHardware(vmmGObjectUI):
 
         rows = []
 
-        # add iommugroup in a set to prevent duplicates
-
         for dev in self.conn.filter_nodedevs("pci"):
             if [dev.xmlobj.iommugroup, "Iommu_Group_{0}".format(dev.xmlobj.iommugroup)] in rows:
                 continue
             if dev.xmlobj.is_pci_bridge() or dev.xmlobj.iommugroup is None or dev.xmlobj.is_cardbus_bridge():
                 continue
             rows.append([dev.xmlobj.iommugroup, "Iommu_Group_{0}".format(dev.xmlobj.iommugroup)])
-
-        ''' iterate over list second time to remove the inexistant intel or amd iommu device iommugroup
-        and to remove iommugroups which have pci-bridge '''
 
         uiutil.build_simple_combo(self.widget("iommu-groups"), rows, sort=False)
 
@@ -1060,8 +1055,8 @@ class vmmAddHardware(vmmGObjectUI):
         if isinstance(dev, list):
             for i in dev:
                 self._xmleditor.set_xml(i and i.get_xml() or "")
-        else:
-            self._xmleditor.set_xml(dev and dev.get_xml() or "")
+            return
+        self._xmleditor.set_xml(dev and dev.get_xml() or "")
 
 
     #########################
@@ -1235,16 +1230,8 @@ class vmmAddHardware(vmmGObjectUI):
 
 
     def _add_device(self, dev):
-        condition = isinstance(dev, list)
-
-        if condition:
-            for devs in dev:
-                xml = devs.get_xml()
-                log.debug("Adding device:\n%s", xml)
-
-        else:
-            xml = dev.get_xml()
-            log.debug("Adding device:\n%s", xml)
+        xml = dev.get_xml()
+        log.debug("Adding device:\n%s", xml)
 
         if self._remove_usb_controller:
             kwargs = {}
@@ -1291,10 +1278,6 @@ class vmmAddHardware(vmmGObjectUI):
         # Alter persistent config
         if controller is not None:
             self.vm.add_device(controller)
-        if condition:
-            for devs in dev:
-                self.vm.add_device(devs)
-            return
         self.vm.add_device(dev)
 
         return False
@@ -1303,7 +1286,11 @@ class vmmAddHardware(vmmGObjectUI):
         failure = True
         if not error:
             try:
-                failure = self._add_device(dev)
+                if isinstance(dev, list):
+                    for devs in dev:
+                        failure = self._add_device(devs)
+                else:
+                    failure = self._add_device(dev)
             except Exception as e:
                 failure = True
                 error = _("Unable to add device: %s") % str(e)
@@ -1323,7 +1310,11 @@ class vmmAddHardware(vmmGObjectUI):
             return
 
         try:
-            if self._validate_device(dev) is False:
+            if isinstance(dev, list):
+                for devs in dev:
+                    if self._validate_device(devs) is False:
+                        return
+            elif self._validate_device(dev) is False:
                 return
         except Exception as e:
             self.err.show_err(
@@ -1363,25 +1354,18 @@ class vmmAddHardware(vmmGObjectUI):
                 return False
 
     def _validate_device(self, dev):
+        if dev.DEVICE_TYPE == "disk":
+            if self.addstorage.validate_device(dev) is False:
+                return False
 
-        if not isinstance(dev, list):
+        if dev.DEVICE_TYPE == "interface":
+            self._netlist.validate_device(dev)
 
-            if dev.DEVICE_TYPE == "disk":
-                if self.addstorage.validate_device(dev) is False:
-                    return False
+        if dev.DEVICE_TYPE == "hostdev":
+            if self._validate_hostdev_collision(dev) is False:
+                return False
 
-            if dev.DEVICE_TYPE == "interface":
-                self._netlist.validate_device(dev)
-
-            dev.validate()
-            return
-        
-        for devs in dev:
-            if devs.DEVICE_TYPE == "hostdev":
-                if self._validate_hostdev_collision(dev) is False:
-                    return False
-
-            devs.validate()
+        dev.validate()
 
     def _build_xmleditor_device(self, srcdev):
         xml = self._xmleditor.get_xml()
@@ -1529,13 +1513,13 @@ class vmmAddHardware(vmmGObjectUI):
             return dev
         # This is used to add all pci devices in a iommugroup
         pci = []
-        for i in self.widget("host-device").get_model():
-            for y in i:
-                if isinstance(y, NodeDevice):
-                    dev = DeviceHostdev(self.conn.get_backend())
-                    dev.set_from_nodedev(y)
-                    setattr(dev, "vmm_nodedev", y)
-                    pci.append(dev)
+        loop = (nodedevices for models in self.widget("host-device").get_model() 
+                for nodedevices in models if isinstance(nodedevices, NodeDevice))
+        for devices in loop:
+            dev = DeviceHostdev(self.conn.get_backend())
+            dev.set_from_nodedev(devices)
+            setattr(dev, "vmm_nodedev", devices)
+            pci.append(dev)
         return pci
 
     def _build_char(self):

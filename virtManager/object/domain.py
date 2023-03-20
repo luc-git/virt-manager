@@ -623,22 +623,17 @@ class vmmDomain(vmmLibvirtObject):
         It is used to get all pci devices in the same iommugroup as the selected pci device'''
 
         # this part is used to get the selected pci device iommugroup
-
-        for dev in self.conn.filter_nodedevs("pci"):
-            if (hex(int(devobj.domain, 16)) == hex(int(dev.xmlobj.domain))
-                    and hex(int(dev.xmlobj.bus)) == hex(int(devobj.bus, 16))
-                    and hex(int(dev.xmlobj.slot)) == hex(int(devobj.slot, 16))
-                    and hex(int(dev.xmlobj.function)) == hex(int(devobj.function, 16))):
-                iommugroup = dev.xmlobj.iommugroup
+        
+        
+        for trydev in self.conn.filter_nodedevs("pci"):
+            if trydev.xmlobj.compare_to_hostdev(devobj):
+                iommugroup = trydev.xmlobj.iommugroup
 
         # this part is used to get all other devices in the iommugroup and return them
 
         for dev in self.conn.filter_nodedevs("pci"):
             for i in xmlobj.devices.hostdev:
-                if (i.type == "pci" and hex(int(i.domain, 16)) == hex(int(dev.xmlobj.domain))
-                        and hex(int(dev.xmlobj.bus)) == hex(int(i.bus, 16))
-                        and hex(int(dev.xmlobj.slot)) == hex(int(i.slot, 16))
-                        and hex(int(dev.xmlobj.function)) == hex(int(i.function, 16))):
+                if dev.xmlobj.compare_to_hostdev(i):
                     if dev.xmlobj.iommugroup == iommugroup:
                         yield i
 
@@ -654,28 +649,22 @@ class vmmDomain(vmmLibvirtObject):
 
         xmlobj = self._make_xmlobj_to_define()
 
-        myset = set()
-
-        if (isinstance(devobj, DeviceHostdev) and devobj.type == "pci"
-                and not all(i.xmlobj.iommugroup is None for i in self.conn.filter_nodedevs("pci"))):
+        if (isinstance(devobj, DeviceHostdev) and devobj.type == "pci"):
             for i in self._get_iommu_group(devobj, xmlobj):
                 editdev = self._lookup_device_to_define(xmlobj, i, False)
-                myset.add(editdev)
                 if not editdev:
                     return  # pragma: no cover
+                xmlobj.remove_device(editdev)
         else:
             editdev = self._lookup_device_to_define(xmlobj, devobj, False)
-            myset.add(editdev)
             if not editdev:
                 return  # pragma: no cover
+            xmlobj.remove_device(editdev)
 
         if con:
             rmcon = xmlobj.find_device(con)
             if rmcon:
                 xmlobj.remove_device(rmcon)
-
-        for i in myset:
-            xmlobj.remove_device(i)
 
         self._redefine_xmlobj(xmlobj)
 
